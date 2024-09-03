@@ -160,27 +160,18 @@ import React, { useState } from 'react';
 
 const FormComponent = () => {
   const [formData, setFormData] = useState({
-    loginId: '',
-    password: '',
     name: '',
     age: '',
-    dob: '',
-    course: '',
-    hobbies: {
-      swimming: false,
-      gaming: false,
-    },
-    gender: '',
     email: '',
-    address: '',
+    address: ''
   });
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     
     setFormData(prevState => ({
       ...prevState,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: value
     }));
   };
 
@@ -194,24 +185,6 @@ const FormComponent = () => {
     <form onSubmit={handleSubmit}>
       <fieldset>
         <legend>Form</legend>
-
-        <p>Login Id:<br />
-          <input
-            type="text"
-            name="loginId"
-            value={formData.loginId}
-            onChange={handleChange}
-          />
-        </p>
-
-        <p>Password:<br />
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </p>
 
         <p>Name:<br />
           <input
@@ -229,60 +202,6 @@ const FormComponent = () => {
             value={formData.age}
             onChange={handleChange}
           />
-        </p>
-
-        <p>DOB:<br />
-          <input
-            type="date"
-            name="dob"
-            value={formData.dob}
-            onChange={handleChange}
-          />
-        </p>
-
-        <p>Course:<br />
-          <select
-            name="course"
-            value={formData.course}
-            onChange={handleChange}
-          >
-            <option value="">-------select-------</option>
-            <option value="Graphic Design">Graphic Design</option>
-            <option value="Data Science">Data Science</option>
-            <option value="Quant Analyst">Quant Analyst</option>
-          </select>
-        </p>
-
-        <p>Hobbies:<br />
-          <input
-            type="checkbox"
-            name="hobbies"
-            checked={formData.hobbies.swimming}
-            onChange={(e) => handleChange({ target: { name: 'hobbies', value: { ...formData.hobbies, swimming: e.target.checked } } })}
-          /> Swimming
-          <input
-            type="checkbox"
-            name="hobbies"
-            checked={formData.hobbies.gaming}
-            onChange={(e) => handleChange({ target: { name: 'hobbies', value: { ...formData.hobbies, gaming: e.target.checked } } })}
-          /> Gaming
-        </p>
-
-        <p>Gender:<br />
-          <input
-            type="radio"
-            name="gender"
-            value="Male"
-            checked={formData.gender === 'Male'}
-            onChange={handleChange}
-          /> Male
-          <input
-            type="radio"
-            name="gender"
-            value="Female"
-            checked={formData.gender === 'Female'}
-            onChange={handleChange}
-          /> Female
         </p>
 
         <p>Email:<br />
@@ -309,7 +228,6 @@ const FormComponent = () => {
             type="submit"
             value="Submit"
           />
-          
         </p>
       </fieldset>
     </form>
