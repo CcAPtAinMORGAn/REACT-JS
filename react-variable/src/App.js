@@ -173,7 +173,6 @@ const FormComponent = () => {
     gender: '',
     email: '',
     address: '',
-    color: '#000000'
   });
 
   const handleChange = (e) => {
@@ -310,12 +309,7 @@ const FormComponent = () => {
             type="submit"
             value="Submit"
           />
-          <input
-            type="color"
-            name="color"
-            value={formData.color}
-            onChange={handleChange}
-          />
+          
         </p>
       </fieldset>
     </form>
