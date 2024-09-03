@@ -1,5 +1,5 @@
 
-// //MARKSHEET REACT
+//MARKSHEET REACT
 // import './App.css';
 // import React from 'react';
 
@@ -50,48 +50,48 @@
 // }
 // export default App;
 
-import './App.css';
-import React from 'react';
+// import './App.css';
+// import React from 'react';
 
-function App()
-{
-  const [number1, setNumber1] = React.useState();
-  const [number2, setNumber2] = React.useState();
-  const [total, setTotal] = React.useState(0);
-  const [Avg, setAvg] = React.useState(0);
+// function App()
+// {
+//   const [number1, setNumber1] = React.useState();
+//   const [number2, setNumber2] = React.useState();
+//   const [total, setTotal] = React.useState(0);
+//   const [Avg, setAvg] = React.useState(0);
 
-  function calculateTotal()
-  {
-    setTotal(number1 + number2);
-    setAvg((number1 + number2)/2)
-  }
+//   function calculateTotal()
+//   {
+//     setTotal(number1 + number2);
+//     setAvg((number1 + number2)/2)
+//   }
 
-  return(
-    <div>
-      <h2>Adding two numbers</h2>
-      <p>
-      <input
-      placeholder="First number"
-      type="number"
-      value={number1}
-      onChange={(e) => setNumber1(+e.target.value)}
-      />
-      </p>
+//   return(
+//     <div>
+//       <h2>Adding two numbers</h2>
+//       <p>
+//       <input
+//       placeholder="First number"
+//       type="number"
+//       value={number1}
+//       onChange={(e) => setNumber1(+e.target.value)}
+//       />
+//       </p>
 
-      <p><input
-      placeholder="Second number"
-      type="number"
-      value={number2}
-      onChange={(e) => setNumber2(+e.target.value)}
-      /></p>
+//       <p><input
+//       placeholder="Second number"
+//       type="number"
+//       value={number2}
+//       onChange={(e) => setNumber2(+e.target.value)}
+//       /></p>
 
-      <p><button onClick={calculateTotal}>CALCULATE</button></p>
-      <p>Total: {total} </p>
-      <p>Avg: {Avg}</p>
-    </div>
-  )
-}
-export default App;
+//       <p><button onClick={calculateTotal}>CALCULATE</button></p>
+//       <p>Total: {total} </p>
+//       <p>Avg: {Avg}</p>
+//     </div>
+//   )
+// }
+// export default App;
 
 // // CALCULATOR REACT
 // import './App.css';
@@ -154,3 +154,172 @@ export default App;
 //   )
 // }
 // export default App;
+
+//React form 
+import React, { useState } from 'react';
+
+const FormComponent = () => {
+  const [formData, setFormData] = useState({
+    loginId: '',
+    password: '',
+    name: '',
+    age: '',
+    dob: '',
+    course: '',
+    hobbies: {
+      swimming: false,
+      gaming: false,
+    },
+    gender: '',
+    email: '',
+    address: '',
+    color: '#000000'
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    // Handle form submission logic here
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <fieldset>
+        <legend>Form</legend>
+
+        <p>Login Id:<br />
+          <input
+            type="text"
+            name="loginId"
+            value={formData.loginId}
+            onChange={handleChange}
+          />
+        </p>
+
+        <p>Password:<br />
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+        </p>
+
+        <p>Name:<br />
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+        </p>
+
+        <p>Age:<br />
+          <input
+            type="number"
+            name="age"
+            value={formData.age}
+            onChange={handleChange}
+          />
+        </p>
+
+        <p>DOB:<br />
+          <input
+            type="date"
+            name="dob"
+            value={formData.dob}
+            onChange={handleChange}
+          />
+        </p>
+
+        <p>Course:<br />
+          <select
+            name="course"
+            value={formData.course}
+            onChange={handleChange}
+          >
+            <option value="">-------select-------</option>
+            <option value="Graphic Design">Graphic Design</option>
+            <option value="Data Science">Data Science</option>
+            <option value="Quant Analyst">Quant Analyst</option>
+          </select>
+        </p>
+
+        <p>Hobbies:<br />
+          <input
+            type="checkbox"
+            name="hobbies"
+            checked={formData.hobbies.swimming}
+            onChange={(e) => handleChange({ target: { name: 'hobbies', value: { ...formData.hobbies, swimming: e.target.checked } } })}
+          /> Swimming
+          <input
+            type="checkbox"
+            name="hobbies"
+            checked={formData.hobbies.gaming}
+            onChange={(e) => handleChange({ target: { name: 'hobbies', value: { ...formData.hobbies, gaming: e.target.checked } } })}
+          /> Gaming
+        </p>
+
+        <p>Gender:<br />
+          <input
+            type="radio"
+            name="gender"
+            value="Male"
+            checked={formData.gender === 'Male'}
+            onChange={handleChange}
+          /> Male
+          <input
+            type="radio"
+            name="gender"
+            value="Female"
+            checked={formData.gender === 'Female'}
+            onChange={handleChange}
+          /> Female
+        </p>
+
+        <p>Email:<br />
+          <input
+            type="text"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </p>
+
+        <p>Address:<br />
+          <textarea
+            rows="8"
+            cols="80"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+          />
+        </p>
+
+        <p>
+          <input
+            type="submit"
+            value="Submit"
+          />
+          <input
+            type="color"
+            name="color"
+            value={formData.color}
+            onChange={handleChange}
+          />
+        </p>
+      </fieldset>
+    </form>
+  );
+};
+
+export default FormComponent;
