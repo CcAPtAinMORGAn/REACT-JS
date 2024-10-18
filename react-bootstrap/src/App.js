@@ -1,30 +1,32 @@
-// 1.TOOLTIP CODE
-import React, { useEffect } from 'react';
-//Bootstrap 5 Modules
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min.js';
-import { Tooltip } from 'bootstrap/dist/js/bootstrap.esm.min.js'
-import './mycss.css'
+// // 1.TOOLTIP CODE
+// import React, { useEffect } from 'react';
+// //Bootstrap 5 Modules
+// // npm i bootstrap
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/js/bootstrap.min.js';
+// import { Tooltip } from 'bootstrap/dist/js/bootstrap.esm.min.js'
+// import './mycss.css'
 
-function App() {
+// function App() {
     
- useEffect(() => {
-  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))
- });
+//  useEffect(() => {
+  // // remove bootstrap.Tooltip after copying script from bootstrap
+//   const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+//   const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))
+//  });
 
-  return (
-    <div className="custom-tooltip">
-      <button type="button" class="btn btn-secondary"
-        data-bs-toggle="tooltip" data-bs-placement="top"
-        data-bs-custom-class="custom-tooltip"
-        data-bs-title="This top tooltip is themed via CSS variables.">
-        Custom tooltip
-      </button>
-    </div>
-  );
-}
-export default App;
+//   return (
+//     <div className="custom-tooltip">
+//       <button type="button" class="btn btn-secondary"
+//         data-bs-toggle="tooltip" data-bs-placement="top"
+//         data-bs-custom-class="custom-tooltip"
+//         data-bs-title="This top tooltip is themed via CSS variables.">
+//         Custom tooltip
+//       </button>
+//     </div>
+//   );
+// }
+// export default App;
 
 // 2.BUTTON WITH COLORS
 
@@ -91,11 +93,12 @@ export default App;
 
 // ***************************************//
 // ICONS IN REACT
-// import { FaFacebook } from "react-icons/fa";
+// npm i react-icons
+import { FaFacebook } from "react-icons/fa";
 
-// function App(){
-//     return(
-//        <h1>Hello!! <FaFacebook /></h1> 
-//     )
-// }
-// export default App;
+function App(){
+    return(
+       <h1>Hello!! <FaFacebook /></h1> 
+    )
+}
+export default App;
